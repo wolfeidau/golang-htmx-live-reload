@@ -1,0 +1,13 @@
+{{define "title"}}{{ .Title }}{{end}}
+
+{{define "body"}}
+<h2>Welcome hellod</h2>
+
+<div hx-get="/datetime"
+    hx-trigger="load"
+    hx-swap="outerHTML"
+>
+</div>
+
+{{end}}
+

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{{template "title"}}</title>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  {{template "head"}}
+  {{define "head"}}{{end}}
+  {{ LiveReload }}
+</head>
+
+<body>
+  {{template "body" .}}
+  <script src="/assets/dist/bundle.js"></script>
+</body>
+
+</html>
