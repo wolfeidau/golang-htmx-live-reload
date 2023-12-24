@@ -38,7 +38,12 @@ func ErrorPageHandler(err error, c echo.Context) {
 	data, err := content.ReadFile(errorPage)
 	if err != nil {
 		log.Ctx(ctx).Error().Err(err).Msg("error page not found")
-	} else {
-		c.HTMLBlob(code, data)
+
+		return
+	}
+
+	err = c.HTMLBlob(code, data)
+	if err != nil {
+		log.Ctx(ctx).Error().Err(err).Msg("error page render failed")
 	}
 }
