@@ -3,6 +3,9 @@ watch:
 	@echo "Watching for changes..."
 	go run github.com/wolfeidau/reflex -c reflex.conf
 
+.PHONY: assets
+assets: install-assets build-assets
+
 .PHONY: install-assets
 install-assets:
 	@echo "Installing assets..."
