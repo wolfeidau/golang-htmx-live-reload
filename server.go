@@ -7,8 +7,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-type Website struct {
-}
+type Website struct{}
 
 func newWebsite() *Website {
 	return &Website{}

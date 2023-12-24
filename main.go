@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"net/http"
 
 	"github.com/alecthomas/kong"
@@ -28,13 +29,10 @@ func main() {
 	}
 
 	// setup the core of your application here, routes, handlers, etc
-	err = setupRoutes(e, cfg)
-	if err != nil {
-		log.Fatal().Err(err).Msg("failed to setup routes")
-	}
+	setupRoutes(e, cfg)
 
 	log.Info().Msgf("Serving on http://%s", cfg.Addr)
-	if err = e.Start(cfg.Addr); err != http.ErrServerClosed {
+	if err = e.Start(cfg.Addr); !errors.Is(err, http.ErrServerClosed) {
 		log.Fatal().Err(err).Msg("failed to start listener")
 	}
 }
