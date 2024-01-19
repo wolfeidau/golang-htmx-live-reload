@@ -1,5 +1,5 @@
 .PHONY: watch
-watch:
+watch: install-assets
 	@echo "Watching for changes..."
 	go run github.com/wolfeidau/reflex -c reflex.conf
 

@@ -24,3 +24,9 @@ func (ws *Website) DateTime(c echo.Context) error {
 		"DateTime": time.Now().Format(time.RFC3339),
 	})
 }
+
+func (ws *Website) Health(c echo.Context) error {
+	return c.JSON(http.StatusOK, map[string]any{
+		"status": "ok",
+	})
+}

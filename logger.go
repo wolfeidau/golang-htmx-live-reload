@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"os"
 
 	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
@@ -31,10 +30,8 @@ func (vl *viewLogger) Debug(msg string, fields map[string]any) {
 // configureLogger configures the global logger used by the application.
 // It sets the output to stderr and enables caller info if devMode is true.
 func configureLogger(devMode bool) zerolog.Logger {
-	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr}).With().Logger()
-
 	if devMode {
-		log.Logger = zerolog.New(zerolog.NewConsoleWriter()).With().Caller().Logger()
+		log.Logger = zerolog.New(zerolog.NewConsoleWriter()).With().Timestamp().Caller().Logger()
 	}
 
 	return log.Logger

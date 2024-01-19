@@ -11,4 +11,5 @@ func setupRoutes(e *echo.Echo, _ websiteFlags) {
 
 	e.GET("/", ws.Index)
 	e.GET("/datetime", ws.DateTime)
+	e.GET("/health", ws.Health)
 }

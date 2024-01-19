@@ -30,6 +30,12 @@ func configureRouter(e *echo.Echo, logger zerolog.Logger, cfg websiteFlags) erro
 		Logger: logger,
 	}))
 
+	e.Use(middleware.ZeroLogRequestLogWithConfig(middleware.ZeroLogRequestLogConfig{
+		Skipper: func(c echo.Context) bool {
+			return c.Path() == "/health"
+		},
+	}))
+
 	e.StaticFS("/", public.GetContent(cfg.DevMode))
 
 	e.HideBanner = true
